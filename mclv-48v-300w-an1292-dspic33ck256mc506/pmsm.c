@@ -139,7 +139,7 @@ int main ( void )
         {
             DiagnosticsStepMain();
             BoardService();
-
+                      
             if (IsPressed_Button1())
             {
                 if  ((uGF.bits.RunMotor == 1) || (PWM_FAULT_STATUS == 1))
@@ -619,9 +619,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _ADCInterrupt()
             BoardServiceStepIsr(); 
         }
         measureInputs.potValue = (int16_t)( ADCBUF_SPEED_REF_A>>1);
-        measureInputs.dcBusVoltage = (int16_t)( ADCBUF_VBUS_A>>1);
-        
-        MCAPP_MeasureTemperature(&measureInputs,(int16_t)(ADCBUF_MOSFET_TEMP_A>>1));
+        measureInputs.dcBusVoltage = (int16_t)( ADCBUF_VBUS_A>>1); 
         
         DiagnosticsStepIsr();
     }
