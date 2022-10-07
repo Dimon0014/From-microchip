@@ -77,7 +77,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>dsPIC33CK256MP508</targetDevice>
+        <targetDevice>dsPIC33CK256MC506</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
@@ -86,7 +86,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="dsPIC33CK-MP_DFP" vendor="Microchip" version="1.6.176"/>
+        <pack name="dsPIC33CK-MC_DFP" vendor="Microchip" version="1.5.126"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
