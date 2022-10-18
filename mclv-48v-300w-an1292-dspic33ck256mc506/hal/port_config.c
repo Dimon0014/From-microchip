@@ -10,8 +10,8 @@
     pins
 
   Description:
-    Definitions in the file are for dsPIC33CK64MC105 on Motor Control 
-    Development board from Microchip
+    Definitions in the file are for dsPIC33CK256MC506 MC DIM plugged onto
+    Motor Control Development board from Microchip
  
 *******************************************************************************/
 /*******************************************************************************
@@ -157,10 +157,10 @@ void MapGPIOHWFunction(void)
 {
     
     /* ANALOG SIGNALS */
-   /*Ibus,Ia and Ib channels are configured as 'Output' pins during Internal
-    amplifier selection and, configured as 'Input' pins during External 
-    amplifier selection*/
-       
+
+    // Configure Port pins for Motor Current Sensing 
+
+    
 #ifdef INTERNAL_OPAMP_CONFIG
     
     //Ibus-
@@ -229,6 +229,10 @@ void MapGPIOHWFunction(void)
     ANSELBbits.ANSELB9= 1;
     TRISBbits.TRISB9 = 1;   // Pin 49: PGC1/AN11/RP41/SDA1/RB9
     
+    /*TEMPERATURE*/
+    ANSELCbits.ANSELC6 = 1;
+    TRISCbits.TRISC6 = 1;  //PIN24:AN19/IBIAS1/RP54/RC6
+	
     /*DC Bus Voltage Signals*/
     ANSELBbits.ANSELB8 = 1;
     TRISBbits.TRISB8 = 1;   //Pin 48: PGD1/AN10/RP40/SCL1/RB8 
@@ -263,9 +267,7 @@ void MapGPIOHWFunction(void)
     // SW2 : 
     TRISCbits.TRISC15 = 1;           // Pin 6: RP63/RC15
     
-    //Configuring RP79 as PCI22 input for FLTLAT_OC_OV
-	_PCI9R = 79;                // Pin 8: RP79/PCI22/RD15
-	/** Diagnostic Interface for LVMC Board etc.
+	/** Diagnostic Interface for MCLV-48V-300W.
         Re-map UART Channels to the device pins connected to the following 
         PIM pins on the Motor Control Development Boards .
         UART_RX : PIN #4 - RP61/RC13 (Input)

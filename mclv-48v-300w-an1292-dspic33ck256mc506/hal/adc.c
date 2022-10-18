@@ -8,8 +8,8 @@
     This file includes subroutine for initializing ADC Cores of Controller
 
   Description:
-    Definitions in the file are for dsPIC33CK256MP508 on Motor Control 
-    Development board from Microchip
+    Definitions in the file are for dsPIC33CK256MC506 MC DIM plugged onto
+	Motor Control Development board from Microchip
 
 *******************************************************************************/
 /*******************************************************************************
@@ -143,8 +143,8 @@ void InitializeADCs (void)
     /* ADC Module Clock Source Divider bits (1 to 64)
        The divider forms a TCORESRC clock used by all ADC cores (shared and 
        dedicated) from the TSRC ADC module clock selected by the CLKSEL<2:0> .
-       000000 = 1 Source Clock Periods */
-    ADCON3Hbits.CLKDIV = 0;
+       000001 = 2 Source Clock Periods */
+    ADCON3Hbits.CLKDIV = 1;
     
     /* Configuring ADC INPUT MODE CONTROL REGISTER bits 
        Output Data Sign for Corresponding Analog Inputs bits
@@ -152,17 +152,22 @@ void InitializeADCs (void)
        0 = Channel output data is unsigned    */
     /*ADMOD0L configures Output Data Sign for Analog inputs  AN0 to AN7 */
     ADMOD0L = 0x0000;
+    /*Ia*/
     ADMOD0Lbits.SIGN0 = 1;
+    /*Ib*/
     ADMOD0Lbits.SIGN1 = 1;
+    /*Ibus*/
     ADMOD0Lbits.SIGN4 = 1;
    
     /*ADMOD0H configures Output Data Sign for Analog inputs  AN8 to AN15 */
     ADMOD0H = 0;   
+    /*POT*/
     ADMOD0Hbits.SIGN11 = 0;
     ADMOD1L = 0x0000;
+    /*Vbus*/
     ADMOD0Hbits.SIGN10 = 0;
-    
-
+    /*MOSFET Temp*/
+    ADMOD1Lbits.SIGN19 = 0;
     
     /* Ensuring all interrupts are disabled and Status Flags are cleared */
     ADIEL = 0;
@@ -247,17 +252,19 @@ void InitializeADCs (void)
     
 
 #ifdef SINGLE_SHUNT
-    /* Trigger Source for Analog Input #4  = 0b0101 */
+    /* Trigger Source for Analog Input #4  = 0b0101 for Ibus */
     ADTRIG1Lbits.TRGSRC4 = 0x5;
 #else
-      /* Trigger Source for Analog Input #0  = 0b0100 */
+      /* Trigger Source for Analog Input #0  = 0b0100 for Ia */
     ADTRIG0Lbits.TRGSRC0 = 0x4;
-    /* Trigger Source for Analog Input #1  = 0b0100 */
+    /* Trigger Source for Analog Input #1  = 0b0100 for Ib */
     ADTRIG0Lbits.TRGSRC1 = 0x4; 
 #endif
-    /* Trigger Source for Analog Input #11  = 0b0100 */
+    /* Trigger Source for Analog Input #11  = 0b0100 for POT */
     ADTRIG2Hbits.TRGSRC11 = 0x4;
-    /* Trigger Source for Analog Input #10  = 0b0100 */
+    /* Trigger Source for Analog Input #10  = 0b0100 for Vbus */
     ADTRIG2Hbits.TRGSRC10 = 0x4;
+	/* Trigger Source for Analog Input #19  = 0b0100 for MOSFET Temp*/
+    ADTRIG4Hbits.TRGSRC19 = 0x4;
 
 }

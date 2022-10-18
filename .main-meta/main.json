@@ -10,15 +10,15 @@
       "shortDescription":"Sensorless Field Oriented Control of a PMSM with PLL Estimator",
       "ide":{
          "name":"MPLABX",
-         "semverRange":">=6.00.0"
+         "semverRange":">=6.00"
       },
       "compiler":{
          "name":"XC16",
-         "semverRange":">=1.70.0"
+         "semverRange":">=2.00"
       },
       "dfp":{
-         "name":"xxxxxxxxxxxxxxx",
-         "semverRange":">=x.x.x"
+         "name":"dsPIC33CK-MC_DFP",
+         "semverRange":"=1.5.126"
       },
 	  "configurator": {
          "name": "MCC",
@@ -36,14 +36,14 @@
       },
 	  "peripherals":[
          "ADC",
-		 "PWM"
+	 "PWM"
       ],
       "keywords":[
          "Motor Control",
-		 "PMSM",
-		 "Sensorless Control",
-		 "FOC",
-		 "dsPIC"
+         "PMSM",
+         "Sensorless Control",
+         "FOC",
+         "dsPIC"
       ]
    }
 }

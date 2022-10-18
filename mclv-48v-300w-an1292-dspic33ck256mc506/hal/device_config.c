@@ -9,7 +9,7 @@
 	to select oscillators, communication channels and resets.
 
   Description:
-    Definitions in the file are for dsPIC33CK256MP508.
+    Definitions in the file are for dsPIC33CK25CMP506.
 *******************************************************************************/
 /*******************************************************************************
 * Copyright (c) 2019 released Microchip Technology Inc.  All rights reserved.
@@ -45,10 +45,6 @@
 * certify, or support the code.
 *
 *******************************************************************************/
-// DSPIC33CK256MC506 Configuration Bit Settings
-
-// 'C' source line config statements
-
 // FSEC
 #pragma config BWRP = OFF               // Boot Segment Write-Protect bit (Boot Segment may be written)
 #pragma config BSS = DISABLED           // Boot Segment Code-Protect Level bits (No Protection (other than BWRP))

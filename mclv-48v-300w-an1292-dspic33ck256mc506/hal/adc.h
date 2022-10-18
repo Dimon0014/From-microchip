@@ -8,8 +8,8 @@
     This header file lists ADC Configuration related functions and definitions
 
   Description:
-    Definitions in the file are for dsPIC33CK256MP508 on Motor Control 
-    Development board from Microchip
+    Definitions in the file are for dsPIC33CK256MC506 MC DIM plugged onto
+	Motor Control Development board from Microchip
 
 *******************************************************************************/
 /*******************************************************************************
@@ -72,6 +72,7 @@
         
 #define ADCBUF_SPEED_REF_A      ADCBUF11
 #define ADCBUF_VBUS_A           ADCBUF10
+#define ADCBUF_MOSFET_TEMP_A    ADCBUF19
 
 #ifdef SINGLE_SHUNT       
 #define EnableADCInterrupt()   _ADCAN4IE = 1
