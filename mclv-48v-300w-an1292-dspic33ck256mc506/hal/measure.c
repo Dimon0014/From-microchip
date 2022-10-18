@@ -193,3 +193,25 @@ int16_t MCAPP_MeasureAvg(MCAPP_MEASURE_AVG_T *pFilterData)
     }
     return pFilterData->avg;
 }
+/**
+* <B> Function: void MC_MovingAvgFilterInit(MC_MOVING_AVG_T *)              </B>
+*
+* @brief Function to reset moving average filter history .
+*
+* @param none.
+* @return none.
+* @example
+* <CODE> MC_MovingAvgFilterInit(&filterData); </CODE>
+*
+*/
+void MCAPP_MeasureTemperature(MCAPP_MEASURE_T *pData, int16_t input)
+{
+    pData->MOSFETTemperature.input = input;
+    pData->MOSFETTemperatureAvg = MCAPP_MeasureAvg(&pData->MOSFETTemperature);
+    if (pData->MOSFETTemperature.status == 1)
+    {
+        pData->MOSFETTemperatureAvg = (int16_t)(__builtin_mulss
+                ((pData->MOSFETTemperatureAvg-OFFSET_COUNT_MOSFET_TEMP) ,
+                MOSFET_TEMP_COEFF) >> 15);
+    }
+}
