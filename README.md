@@ -40,8 +40,7 @@ To clone or download this application firmware on GitHub,
 ## 3. HARDWARE SETUP
 This section describes hardware setup required for the demonstration.
 
-1. Motor currents are amplified on the MCLV-48V-300W Inverter Board; it can also be amplified by the amplifiers internal to the dsPIC33CK256MC506 on the DIM. The firmware and DIM are configured to sample and convert internal amplifier outputs (**'internal op-amp configuration'**) by default to measure the motor currents needed to implement FOC. 
-**Table-1** summarizes the resistors to be populated and removed to convert the DIM from **‘internal op-amp configuration’** to **‘external op-amp configuration’** or vice versa.
+1. Motor currents are amplified on the MCLV-48V-300W Inverter Board; it can also be amplified by the amplifiers internal to the dsPIC33CK256MC506 on the DIM. The firmware and DIM are configured to sample and convert internal amplifier outputs (**'internal op-amp configuration'**) by default to measure the motor currents needed to implement FOC. **Table-1** summarizes the resistors to be populated and removed to convert the DIM from **‘internal op-amp configuration’** to **‘external op-amp configuration’** or vice versa.
 
      <p align="left" >
      <img  src="images/Tableopamp.png"></p>
@@ -112,17 +111,17 @@ Follow the below instructions, step by step, to set up and run the motor control
  
 
 	
-3. Open <code>**userparms.h** </code> (**pmsm.X > Header Files**) in the project **pmsm.X.**  
-     - Ensure that the macros <code>**TUNING</code>, <code>OPEN_LOOP_FUNCTIONING</code>, <code>TORQUE_MODE</code>, and <code>SINGLE_SHUNT</code>** is not defined in the header file<code> **userparms.h.**</code>
+3. Open ```**userparms.h** ``` (**pmsm.X > Header Files**) in the project **pmsm.X.**  
+     - Ensure that the macros ```**TUNING```, ```OPEN_LOOP_FUNCTIONING```, ```TORQUE_MODE```, and ```SINGLE_SHUNT```** is not defined in the header file``` **userparms.h.**```
           <p align="left"><img  src="images/configParam.png"></p>
 
-     - When internal amplifiers are used for current amplification (referred to as **internal op-amp configuration**), **define** the macro <code>**INTERNAL_OPAMP_CONFIG**</code> in <code>**userparms.h.**</code>
+     - When internal amplifiers are used for current amplification (referred to as **internal op-amp configuration**), **define** the macro ```**INTERNAL_OPAMP_CONFIG**``` in ```**userparms.h.**```
           <p align="left"> <img  src="images/internalopampconfig.png"></p>
-     - Otherwise, if external amplifiers are used for current amplification (referred to as **external op-amp configuration**), undefine the macro <code>**INTERNAL_OPAMP_CONFIG**</code> in the header file <code>**userparms.h.**</code>
+     - Otherwise, if external amplifiers are used for current amplification (referred to as **external op-amp configuration**), undefine the macro ```**INTERNAL_OPAMP_CONFIG**``` in the header file ```**userparms.h.**```
         <p align="left"><img  src="images/externalopampconfig.png"></p> 
 
 > **Note:**</br>
->The motor phase currents can be reconstructed from the DC Bus current by appropriately sampling it during the PWM switching period, called a single-shunt reconstruction algorithm. The firmware can be configured to demonstrate **the single shunt reconstruction algorithm** by defining the macro <code>**SINGLE_SHUNT**</code> in the header file <code>**userparms.h**</code> 
+>The motor phase currents can be reconstructed from the DC Bus current by appropriately sampling it during the PWM switching period, called a single-shunt reconstruction algorithm. The firmware can be configured to demonstrate **the single shunt reconstruction algorithm** by defining the macro ```**SINGLE_SHUNT**``` in the header file ```**userparms.h**``` 
 >For additional information, refer to Microchip application note **AN1299, “Single-Shunt Three-Phase Current Reconstruction Algorithm for Sensorless FOC of a PMSM.”**
 >By default, the firmware uses phase currents measured across the phase shunt resistors on two of the half-bridges of the three-phase inverter (**‘dual shunt configuration’**) to implement FOC.
 
@@ -165,8 +164,8 @@ Follow the below instructions, step by step, to set up and run the motor control
     <p align="left">
     <img  src="images/potentiometer.png"></p>
  
-10. Press the push button **SW2** to enter the extended speed range (<code>NOMINAL_SPEED_RPM</code> to <code>MAXIMUM_SPEED_RPM</code>).
-Press the push button **SW2** again to revert the speed of the motor to its nominal speed range (<code>END_SPEED_RPM</code> to <code>NOMINAL_SPEED_RPM</code>).
+10. Press the push button **SW2** to enter the extended speed range (```NOMINAL_SPEED_RPM``` to ```MAXIMUM_SPEED_RPM```).
+Press the push button **SW2** again to revert the speed of the motor to its nominal speed range (```END_SPEED_RPM``` to ```NOMINAL_SPEED_RPM```).
       <p align="left">
      <img  src="images/stopButton.png"></p> 
 
@@ -174,7 +173,7 @@ Press the push button **SW2** again to revert the speed of the motor to its nomi
 
 
 >**Note:**</br>
->The macros <code>END_SPEED_RPM</code>, <code>NOMINAL_SPEED_RPM</code>, and <code>MAXIMUM_SPEED_RPM</code> are specified in the header file <code>**userparms.h**</code> included in the project **pmsm.X.** The macros <code>NOMINAL_SPEED_RPM</code> and <code>MAXIMUM_SPEED_RPM</code> are defined as per the Motor manufacturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
+>The macros ```END_SPEED_RPM```, ```NOMINAL_SPEED_RPM```, and ```MAXIMUM_SPEED_RPM``` are specified in the header file ```**userparms.h**``` included in the project **pmsm.X.** The macros ```NOMINAL_SPEED_RPM``` and ```MAXIMUM_SPEED_RPM``` are defined as per the Motor manufacturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
 
 ## 5.3  Data visualization through X2C-Scope Plug-in of MPLAB X
 
@@ -209,7 +208,7 @@ X2C-Scope is a third-party plug-in in MPLAB X, which helps in real-time diagnost
 
 
 7. Open the **Project Setup** tab in the **X2CScope Configuration** window and,
-     - Set **Scope Sampletime** as the interval at which <code>X2CScopeUpdate()</code> is called. In this application, it is every <code>50µs.</code> 
+     - Set **Scope Sampletime** as the interval at which ```X2CScopeUpdate()``` is called. In this application, it is every ```50µs.``` 
      - Then, click **Set Values** to save the configuration.
 
       <p align="left">
